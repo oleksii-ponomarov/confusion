@@ -9,13 +9,12 @@ import {
 } from 'reactstrap';
 
 class Menu extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       selectedDish: null,
-    }
+    };
   }
 
   onDishSelect(dish) {
@@ -44,12 +43,14 @@ class Menu extends React.Component {
   }
 
   render() {
+    console.log(this.state.selectedDish);
+
     const menu = this.props.dishes.map((dish) => {
       return (
-        <div key={dish.id} className="col-12 col-md-6 my-3">
+        <div key={dish.id} className="col-12 col-md-5 m-1">
           <Card onClick={() => this.onDishSelect(dish)}>
             <CardImg width="100%" src={dish.image} alt={dish.name} />
-            <CardImgOverlay className="ml-5">
+            <CardImgOverlay body className="ml-5">
               <CardTitle>{dish.name}</CardTitle>
             </CardImgOverlay>
           </Card>
@@ -59,7 +60,7 @@ class Menu extends React.Component {
 
     return (
       <div className="container">
-        <div className="row">
+        <div className="row d-flex justify-content-center">
           {menu}
         </div>
         <div className="row d-flex justify-content-center">
