@@ -25,28 +25,20 @@ class DishDetail extends React.Component {
   }
 
   renderComments(comments) {
-    const formatDate = (dateString) => {
-      const date = new Date(dateString);
-      const monthsNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      const month = date.getMonth();
-      const day = date.getDate();
-      const year = date.getFullYear();
-
-      return `${monthsNames[month]} ${day < 10 ? "0" + day : day}, ${year}`
-    };
-
-    if (comments !== null) {
+    if (comments) {
       return(
         <div>
           <h4>Comments</h4>
           <ul className="list-unstyled">
             {comments.map(comment => (
               <React.Fragment key={comment.id}>
-                <li className="mb-3">
-                  {comment.comment}
-                </li>
-                <li className="mb-3">
-                  {`-- ${comment.author}, ${formatDate(comment.date)}`}
+                <li>
+                  <p>
+                    {comment.comment}
+                  </p>
+                  <p>
+                    {`-- ${comment.author}, ${new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(comment.date))}`}
+                  </p>
                 </li>
               </React.Fragment>
             ))}
@@ -61,14 +53,16 @@ class DishDetail extends React.Component {
   render() {
     const dish = this.props.dish;
 
-    if (dish !== null) {
+    if (dish) {
       return(
-        <div className="row">
-          <div className="col-12 col-md-5 m-1">
-              {this.renderDish(dish)}
-          </div>
-          <div className="col-12 col-md-5 m-1">
-            {this.renderComments(dish.comments)}
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-5 m-1">
+                {this.renderDish(dish)}
+            </div>
+            <div className="col-12 col-md-5 m-1">
+              {this.renderComments(dish.comments)}
+            </div>
           </div>
         </div>
       )
