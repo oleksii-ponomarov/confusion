@@ -31,3 +31,13 @@ address{
 .navbar-dark {
   background-color: #512DA8;
 }
+
+.media-list .media {
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .media-list .media {
+    flex-direction: row;
+  }
+}

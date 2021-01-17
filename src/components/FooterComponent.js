@@ -7,8 +7,8 @@ function Footer() {
   return (
     <div className="footer">
       <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-4 offset-1 col-sm-2">
+        <div className="row  m-0 d-flex justify-content-center">
+          <div className="col-12 offset-1 col-sm-2 col-md-4">
             <h5>Links</h5>
             <ul className="list-unstyled">
               <li>
@@ -25,7 +25,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-7 col-sm-5">
+          <div className="col-12 col-sm-5 col-md-7">
             <h5>Our Address</h5>
             <address>
               121, Clear Water Bay Road
@@ -81,8 +81,9 @@ function Footer() {
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-auto">
-            <p>© Copyright {now.getFullYear()} Ristorante Con Fusion</p>
+          <div className="col-auto text-center">
+            <p className="mt-4 mb-1">© Copyright {now.getFullYear()}</p>
+            <p>Ristorante Con Fusion</p>
           </div>
         </div>
       </div>
