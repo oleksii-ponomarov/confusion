@@ -85,7 +85,7 @@ class Header extends React.Component {
               </Nav>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <Button outline onClick={this.toggleModal}>
+                  <Button outline color="light" onClick={this.toggleModal}>
                     <span className="fa fa-sign-in fa-lg" />Login
                   </Button>
                 </NavItem>
@@ -103,6 +103,7 @@ class Header extends React.Component {
             </div>
           </div>
         </Jumbotron>
+
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>
             Login
@@ -147,6 +148,7 @@ class Header extends React.Component {
             </Form>
           </ModalBody>
         </Modal>
+
       </React.Fragment>
     );
   }
