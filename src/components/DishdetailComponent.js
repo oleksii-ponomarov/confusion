@@ -40,6 +40,7 @@ class CommentForm extends React.Component {
 
   handleSubmit(values) {
     console.log(values);
+    this.toggleForm();
     alert(
       `Comment info:\n\nRating: ${values.rating}\nAuthor: ${values.author}\nComment: ${values.comment}`
     );
@@ -99,7 +100,6 @@ class CommentForm extends React.Component {
                   className="form-control"
                   placeholder="Your Name"
                   validators={{
-                    required,
                     minLength: minLength(3),
                     maxLength: maxLength(15)
                   }}
@@ -107,9 +107,8 @@ class CommentForm extends React.Component {
                 <Errors
                   className="text-danger"
                   model=".author"
-                  show={field => field.touched && !field.focus}
+                  show="touched"
                   messages={{
-                    required: "Required ",
                     minLength: "Must be greater than 2 characters ",
                     maxLength: "Must be 15 characters or less "
                   }}
