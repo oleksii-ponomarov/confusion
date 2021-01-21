@@ -124,7 +124,7 @@ class Contact extends React.Component {
                     messages={{
                       required: "Required",
                       minLength: "Must be greater than 2 characters",
-                      maxLength: "Must be l5 characters or less"
+                      maxLength: "Must be 15 characters or less"
                     }}
                   />
                 </Col>
