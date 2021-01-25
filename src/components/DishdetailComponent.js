@@ -16,6 +16,8 @@ import {
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from "react-redux-form";
 
+import { Loading } from "./LoadingComponent";
+
 const required = val => val && val.length;
 const maxLength = len => val => !val || val.length <= len;
 const minLength = len => val => val && val.length >= len;
@@ -187,8 +189,24 @@ const RenderComments = ({ comments, addComment, dishId }) => {
   }
 };
 
-const DishDetail = ({ dish, comments, addComment }) => {
-  if (dish) {
+const DishDetail = ({ dish, comments, addComment, isLoading, errMess }) => {
+  if (isLoading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
+      </div>
+    )
+  } else if (errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{errMess}</h4>
+        </div>
+      </div>
+    )
+  } else if (dish) {
     return(
       <div className="container">
         <div className="row">
