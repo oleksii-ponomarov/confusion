@@ -39,10 +39,12 @@ class CommentForm extends React.Component {
   }
 
   handleSubmit(values) {
-    console.log(values);
     this.toggleForm();
-    alert(
-      `Comment info:\n\nRating: ${values.rating}\nAuthor: ${values.author}\nComment: ${values.comment}`
+    this.props.addComment(
+      this.props.dishId,
+      values.rating,
+      values.author,
+      values.comment
     );
   }
 
@@ -155,7 +157,7 @@ const RenderDish = ({ dish }) => {
   )
 };
 
-const RenderComments = ({ comments }) => {
+const RenderComments = ({ comments, addComment, dishId }) => {
   if (comments) {
     return(
       <div className="col-12 col-md-5 m-1">
@@ -174,7 +176,10 @@ const RenderComments = ({ comments }) => {
             </React.Fragment>
           ))}
         </ul>
-        <CommentForm />
+        <CommentForm
+          addComment={addComment}
+          dishId={dishId}  
+        />
       </div>
     )
   } else {
@@ -182,7 +187,7 @@ const RenderComments = ({ comments }) => {
   }
 };
 
-const DishDetail = ({ dish, comments }) => {
+const DishDetail = ({ dish, comments, addComment }) => {
   if (dish) {
     return(
       <div className="container">
@@ -202,7 +207,11 @@ const DishDetail = ({ dish, comments }) => {
       </div>
         <div className="row">
           <RenderDish dish={dish} />
-          <RenderComments comments={comments} />
+          <RenderComments
+            comments={comments}
+            addComment={addComment}
+            dishId={dish.id}
+          />
         </div>
       </div>
     )
