@@ -15,7 +15,7 @@ function RenderCard({ item, isLoading, errMess }) {
   if (isLoading) {
     return <Loading />
   } else if (errMess) {
-    <h4>{errMess}</h4>
+    return <h4>{errMess}</h4>
   } else {
     return(
       <Card>
