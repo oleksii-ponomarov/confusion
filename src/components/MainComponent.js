@@ -52,8 +52,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchLeaders: () => {
     dispatch(fetchLeaders());
   },
-  postFeedback: () => {
-    dispatch(postFeedback());
+  postFeedback: values => {
+    dispatch(postFeedback(values));
   }
 });
 

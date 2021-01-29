@@ -49,7 +49,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
 export const postFeedback = (values) => {
   const newFeedback = {...values};
 
-  return fetch(baseUrl + 'feeedback', {
+  return fetch(baseUrl + 'feedback', {
     method: 'POST',
     body: JSON.stringify(newFeedback),
     headers: {
